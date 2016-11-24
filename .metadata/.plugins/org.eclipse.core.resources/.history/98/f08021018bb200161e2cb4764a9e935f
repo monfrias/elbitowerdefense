@@ -1,0 +1,8 @@
+package window;
+
+public class LevelFile {
+
+	FileInputStream file;
+	InputStreamReader reader;
+	Scanner scanner;
+}
