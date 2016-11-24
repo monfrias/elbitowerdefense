@@ -6,22 +6,28 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
+import game.objects.FireTower;
+import game.objects.LightningTower;
 import game.objects.Tower;
+import game.objects.WaterTower;
 
 public class Screen extends JPanel implements Runnable {
 
 	private static final long serialVersionUID = 8774272556401768353L;
 	public Thread thread = new Thread(this);
 	private int fps = 0;
-	public int scene;
-	public int hand = 0;
-	public int handXPos = 0;
-	public int handYPos = 0;
+	private int scene;
+	private int hand = 0;
+	private int handXPos = 0;
+	private int handYPos = 0;
 	private boolean running = false;
-	Frame frame;
-	Player player;
+	
 	public int towerWidth = 40;
 	public int towerHeight = 40;
+	
+	Frame frame;
+	Player player;
+	Tower tempTower;
 	
 	public Screen(Frame frame) {
 		this.frame  = frame;
@@ -58,33 +64,26 @@ public class Screen extends JPanel implements Runnable {
 			//end health and money section
 			
 			//start tower section
-			//for loop dapat to
-			g.setColor(Color.BLUE);
-			g.drawImage(Tower.towerList[0].texture, 820, 560, null);
 			
-			if(Tower.towerList[0].cost > this.player.getMoney()) {
-				g.setColor(new Color(255, 0, 0, 100));
-				g.fillRect(820, 560, 80, 80);
+			int x = 700;
+			
+			for(int i = 0; i < 4; i++) {
+				g.setColor(Color.GREEN);
+				
+				g.drawRect(x, 560, 80, 80);
+				
+				if(i == 0) tempTower = new LightningTower(10, "lightning");
+				else if(i == 1) tempTower = new FireTower(10, "fire");
+				else if(i == 2) tempTower = new WaterTower(30, "water");
+				else tempTower = new LightningTower(10, "lightning");
+				
+				g.drawImage(tempTower.getTextureFile(), x, 560, null);
+				if(tempTower.cost > this.player.getMoney()) {
+					g.setColor(new Color(255, 0, 0, 100));
+					g.fillRect(x, 560, 80, 80);
+				}
+				x -= 120;
 			}
-			
-			g.drawRect(820, 560, 80, 80);
-			
-			g.setColor(Color.GREEN);
-			g.drawImage(null, 700, 560, null);
-			g.drawRect(700, 560, 80, 80);
-			
-			g.setColor(Color.YELLOW);
-			g.drawImage(null, 580, 560, null);
-			g.drawRect(580, 560, 80, 80);
-			
-			g.setColor(Color.ORANGE);
-			g.drawImage(null, 460, 560, null);
-			g.drawRect(460, 560, 80, 80);
-			
-			g.setColor(Color.RED);
-			g.drawImage(null, 340, 560, null);
-			g.drawRect(340, 560, 80, 80);
-			//end tower section
 		}
 		
 		g.setColor(Color.WHITE);
@@ -98,7 +97,9 @@ public class Screen extends JPanel implements Runnable {
 	}
 	
 	public void run() {
-
+		
+		System.out.println("Width: " + this.frame.getWidth() + ", Height: " + this.frame.getHeight());
+		
 		startGame();
 		long lastFrame = System.currentTimeMillis();
 		int frames = 0;
@@ -124,31 +125,45 @@ public class Screen extends JPanel implements Runnable {
 		System.exit(0);
 	}
 	
-	public class KeyTyped {
-		
-		public void keyESC() {
+	public boolean isRunning() {
+		return this.running;
+	}
+	
+	public void stopRunning() {
+		if(running) {
 			running = false;
 		}
 	}
 	
-	public class MouseHeld {
-		boolean mouseDown = false;
-		
-		public void mouseDown(MouseEvent e) {
-			
-		}
-
-		public void mouseMoved(MouseEvent e) {
-			handXPos = e.getXOnScreen();
-			handYPos = e.getYOnScreen();
-		}
-		
-		public void updateMouse(MouseEvent e) {
-			if(scene == 1) {
-				if(mouseDown && hand == 0) {
-					//if(e.getXOnScreen() >= frame.getWidth())
-				}
-			}
-		}
+	public void setHandXPos(int handXPos) {
+		this.handXPos = handXPos;
+	}
+	
+	public void setHandYPos(int handYPos) {
+		this.handYPos = handYPos;
+	}
+	
+	public int getHandXPos() {
+		return this.handXPos;
+	}
+	
+	public int getHandYPos() {
+		return this.handYPos;
+	}
+	
+	public void setHand(int hand) {
+		this.hand = hand;
+	}
+	
+	public int getHand() {
+		return this.hand;
+	}
+	
+	public void setScene(int scene) {
+		this.scene = scene;
+	}
+	
+	public int getScene() {
+		return this.scene;
 	}
 }

@@ -4,11 +4,11 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public class LightningTower extends Tower {
+public class WaterTower extends Tower {
 	
-	public LightningTower(int cost, String type) {
+	public WaterTower(int cost, String type) {
 		super(cost, type);
-		this.path = "res/towers/tower1.png";
+		this.path = "res/towers/tower3.png";
 	}
 
 	public Image getTextureFile() {

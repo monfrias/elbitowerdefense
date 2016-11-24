@@ -11,11 +11,10 @@ public class Player {
 	private int money;
 	private final int startingMoney = 500;
 	private final int startingHealth = 10;
-	private ArrayList<Tower>towerList = new ArrayList<Tower>();
 	
 	public Player(Screen screen) {
 		this.screen = screen;
-		this.screen.scene = 0;
+		this.screen.setScene(0);
 		this.money = startingMoney;
 		this.health = startingHealth;
 	}

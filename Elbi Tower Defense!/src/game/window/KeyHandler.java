@@ -6,19 +6,21 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener{
 	
 	private Screen screen;
-	private Screen.KeyTyped keyTyped;
+	private boolean running;
 	
 	public KeyHandler(Screen screen) {
-		this.screen = screen;
-		this.keyTyped = this.screen.new KeyTyped();
-		
+		this.screen = screen;		
 	}
 	
 	public void keyPressed(KeyEvent e) {
 		int keyCode = e.getKeyCode();
 		
 		if(keyCode == e.VK_ESCAPE) {
-			this.keyTyped.keyESC();
+			running = this.screen.isRunning();
+			
+			if(running) {
+				this.screen.stopRunning();
+			}
 		}
 	}
 
