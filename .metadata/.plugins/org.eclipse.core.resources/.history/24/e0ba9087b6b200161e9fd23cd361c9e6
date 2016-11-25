@@ -1,0 +1,11 @@
+package window;
+
+public class Level {
+	
+	public int[][] map;
+	SpawnPoint spawPoint;
+	
+	public int[][] getMap() {
+		return map;
+	}
+}

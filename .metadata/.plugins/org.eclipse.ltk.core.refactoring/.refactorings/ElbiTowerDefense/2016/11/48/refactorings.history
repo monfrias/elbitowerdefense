@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ElbiTowerDefense/res/map/map.txt.txt&apos; to &apos;map.txt&apos;" description="Rename resource &apos;map.txt.txt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/map/map.txt.txt" name="map.txt" stamp="1480043002608" updateReferences="true"/>
+</session>

@@ -1,7 +1,9 @@
 package window;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 
 import javax.swing.JPanel;
 
@@ -27,10 +29,18 @@ public class Screen extends JPanel implements Runnable {
 	public int towerWidth = 40;
 	public int towerHeight = 40;
 	
+	ChatPanel chat = new ChatPanel();
+	
+	Graphics g;
+	
+	public int[][] map = new int[13][29];
+	public Tower[][] towerMap = new Tower[13][29];
+	public Image[] terrain = new Image[100];
+	
 	private Player player;
 	
 	Frame frame;
-	Tower tempTower;
+	private Tower tempTower;
 	Tower lightningTower = new LightningTower();
 	Tower fireTower = new FireTower();
 	Tower waterTower = new WaterTower();
@@ -39,16 +49,20 @@ public class Screen extends JPanel implements Runnable {
 	Level level;
 	LevelFile levelFile;
 	
+	BorderLayout layout = new BorderLayout();
+	
 	public Screen(Frame frame) {
 		this.frame  = frame;
 		this.frame.addKeyListener(new KeyHandler(this));
 		this.frame.addMouseListener(new MouseHandler(this));
+		this.setLayout(layout);
 		thread.start();
 	}
 	
 	public void paintComponent(Graphics g) {
 		
 		if(scene == 1){
+			
 			//start background
 			g.setColor(Color.BLACK);
 			g.fillRect(0, 0, this.frame.getWidth(), this.frame.getHeight());
@@ -101,20 +115,28 @@ public class Screen extends JPanel implements Runnable {
 	}
 	
 	public void startGame() {
+		
 		running = true;
 		player = new Player(this);
 		this.scene = 1;
+		
+		//levelFile = new LevelFile();
+		//level = levelFile.getLevel();
 	}
 	
 	public void run() {
 		
+		//this.add(chat, layout.SOUTH);
+		
 		System.out.println("Width: " + this.frame.getWidth() + ", Height: " + this.frame.getHeight());
 		
 		startGame();
+		
 		long lastFrame = System.currentTimeMillis();
 		int frames = 0;
 		
 		while(running) {
+			
 			repaint();
 			
 			frames++;
@@ -179,5 +201,13 @@ public class Screen extends JPanel implements Runnable {
 	
 	public Player getPlayer() {
 		return this.player;
+	}
+	
+	public void setTempTower(Tower tower) {
+		this.tempTower = tower;
+	}
+	
+	public Tower getTempTower() {
+		return this.tempTower;
 	}
 }

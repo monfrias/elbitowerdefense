@@ -1,5 +1,6 @@
 package window;
 
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -10,6 +11,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 	private Screen screen;
 	private boolean mouseDown = false;
 	Point coords;
+	Graphics g;
 	
 	public MouseHandler(Screen screen) {
 		this.screen = screen;
@@ -42,8 +44,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 
 	public void mouseMoved(MouseEvent e) {
 	
-		this.screen.setHandXPos(e.getXOnScreen());
-		this.screen.setHandYPos(e.getYOnScreen());
+		this.screen.setHandXPos((int)e.getPoint().getX());
+		this.screen.setHandYPos((int)e.getPoint().getY());
 	}
 	
 	public void updateMouse(MouseEvent e) {
@@ -59,6 +61,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 					if(this.screen.getPlayer().getMoney() >= this.screen.fireTower.getCost()) {
 						this.screen.getPlayer().setMoney(this.screen.getPlayer().getMoney() - this.screen.fireTower.getCost());
 						this.screen.setHand(1);
+						this.screen.setTempTower(this.screen.fireTower);
 					}
 				}
 				
@@ -67,6 +70,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 					if(this.screen.getPlayer().getMoney() >= this.screen.windTower.getCost()) {
 						this.screen.getPlayer().setMoney(this.screen.getPlayer().getMoney() - this.screen.windTower.getCost());
 						this.screen.setHand(1);
+						this.screen.setTempTower(this.screen.windTower);
 					}
 				}
 				
@@ -75,6 +79,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 					if(this.screen.getPlayer().getMoney() >= this.screen.waterTower.getCost()) {
 						this.screen.getPlayer().setMoney(this.screen.getPlayer().getMoney() - this.screen.waterTower.getCost());
 						this.screen.setHand(1);
+						this.screen.setTempTower(this.screen.waterTower);
 					}
 				}
 				
@@ -83,7 +88,12 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 					if(this.screen.getPlayer().getMoney() >= this.screen.lightningTower.getCost()) {
 						this.screen.getPlayer().setMoney(this.screen.getPlayer().getMoney() - this.screen.lightningTower.getCost());
 						this.screen.setHand(1);
+						this.screen.setTempTower(this.screen.lightningTower);
 					}
+				}
+				
+				if(this.screen.getHand() != 0) {
+					//g.drawImage(this.screen.getTempTower().getTextureFile(), this.screen.getHandXPos(), this.screen.getHandYPos(), this.screen.towerWidth, this.screen.towerHeight, null);
 				}
 			}
 		}

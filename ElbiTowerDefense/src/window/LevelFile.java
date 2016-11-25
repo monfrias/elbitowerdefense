@@ -11,22 +11,20 @@ public class LevelFile {
 	InputStreamReader reader;
 	Scanner scanner;
 	Level level = new Level();
-	private static final int BOARD_LENGTH = 29;
-	private static final int BOARD_WIDTH = 13;
 	
 	public Level getLevel() {
 		
 		try {
 			
-			file = new FileInputStream("map/map.txt");
+			file = new FileInputStream("res/map/map.txt");
 			reader = new InputStreamReader(file);
 			scanner = new Scanner(reader);
 			
-			level.map = new int[BOARD_LENGTH][BOARD_WIDTH];
+			level.map = new int[level.getLevelWidth()][level.getLevelLength()];
 			
-			for(int i = 0; i < BOARD_LENGTH; i++) {
-				for(int j = 0; j < BOARD_WIDTH; j++) {
-					
+			for(int i = 0; i < level.getLevelWidth(); i++) {
+				for(int j = 0; j < level.getLevelLength(); j++) {
+					level.map[i][j] = scanner.nextInt();
 				}
 			}
 			

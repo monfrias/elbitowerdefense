@@ -1,0 +1,15 @@
+package window;
+
+public class Level {
+	
+	private int[][] map;
+	SpawnPoint spawPoint;
+	
+	public int[][] getMap() {
+		return map;
+	}
+	
+	public void setMap(int rows, int cols) {
+		map = new int[rows][cols];
+	}
+}

@@ -1,0 +1,6 @@
+package window;
+
+public class Level {
+	
+	int[][] map = new int[29][13];
+}

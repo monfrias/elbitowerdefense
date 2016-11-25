@@ -1,11 +1,13 @@
 package window;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
 public class Frame extends JFrame{
 	
+
 	public static void main(String[] args) {
 		
 		new Frame();
