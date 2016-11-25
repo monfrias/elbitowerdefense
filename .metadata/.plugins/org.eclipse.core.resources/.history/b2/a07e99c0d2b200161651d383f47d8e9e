@@ -7,12 +7,12 @@ import java.awt.Image;
 
 import javax.swing.JPanel;
 
-import object.CDCTower;
-import object.IBSTower;
-import object.LibTower;
-import object.MathTower;
+import object.FireTower;
+import object.LightningTower;
 import object.Player;
 import object.Tower;
+import object.WaterTower;
+import object.WindTower;
 
 public class Screen extends JPanel implements Runnable {
 
@@ -96,12 +96,12 @@ public class Screen extends JPanel implements Runnable {
 				
 				g.drawRect(x, 560, 80, 80);
 				
-				if(i == 0) tempTower = libTower;
-				else if(i == 1) tempTower = mathTower;
-				else if(i == 2) tempTower = cdcTower;
-				else tempTower = ibsTower;
+				if(i == 0) tempTower = lightningTower;
+				else if(i == 1) tempTower = waterTower;
+				else if(i == 2) tempTower = windTower;
+				else tempTower = fireTower;
 				
-				g.drawImage(tempTower.getTextureFile(), x, 560, 80, 80,null);
+				g.drawImage(tempTower.getTextureFile(), x, 560, null);
 				if(tempTower.cost > this.player.getMoney()) {
 					g.setColor(new Color(255, 0, 0, 100));
 					g.fillRect(x, 560, 80, 80);

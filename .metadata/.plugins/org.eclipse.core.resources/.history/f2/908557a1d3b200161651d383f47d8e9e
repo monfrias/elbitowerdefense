@@ -76,19 +76,19 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 				
 				//third tower from the left (watertower)
 				if(coords.getX() <= 663 && coords.getX() >= 583 && coords.getY() <= 666 && coords.getY() >= 586 ) {
-					if(this.screen.getPlayer().getMoney() >= this.screen.mathTower.getCost()) {
-						this.screen.getPlayer().setMoney(this.screen.getPlayer().getMoney() - this.screen.mathTower.getCost());
+					if(this.screen.getPlayer().getMoney() >= this.screen.waterTower.getCost()) {
+						this.screen.getPlayer().setMoney(this.screen.getPlayer().getMoney() - this.screen.waterTower.getCost());
 						this.screen.setHand(1);
-						this.screen.setTempTower(this.screen.mathTower);
+						this.screen.setTempTower(this.screen.waterTower);
 					}
 				}
 				
 				//fourth tower from the left (windtower)
 				if(coords.getX() <= 783 && coords.getX() >= 703 && coords.getY() <= 666 && coords.getY() >= 586 ) {
-					if(this.screen.getPlayer().getMoney() >= this.screen.libTower.getCost()) {
-						this.screen.getPlayer().setMoney(this.screen.getPlayer().getMoney() - this.screen.libTower.getCost());
+					if(this.screen.getPlayer().getMoney() >= this.screen.lightningTower.getCost()) {
+						this.screen.getPlayer().setMoney(this.screen.getPlayer().getMoney() - this.screen.lightningTower.getCost());
 						this.screen.setHand(1);
-						this.screen.setTempTower(this.screen.libTower);
+						this.screen.setTempTower(this.screen.lightningTower);
 					}
 				}
 				
