@@ -1,0 +1,40 @@
+import java.awt.Container;
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class ChatClient {
+	
+	public static JFrame frame;
+	public static Container c;
+	public static void main(String[] args) {
+		
+		int status = 0;
+		
+		frame = new JFrame("Chat Client!");
+		frame.setPreferredSize(new Dimension(300, 365));
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLayout(null);
+		frame.setResizable(false);
+		c = frame.getContentPane();
+		
+		if(status == 0) status = askCredentials();
+		
+		frame.pack();
+	}
+	
+	public static int askCredentials() {
+		
+		JTextField nameField = new JTextField();
+		nameField.setBounds(50, 50, 200, 25);
+		JLabel nameLabel = new JLabel("Name");
+		
+		c.add(nameField);
+		c.add(nameLabel);
+		
+		return 1;
+	}
+}

@@ -1,0 +1,62 @@
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class ChatServer {
+	
+	public static void main(String[] args) {
+		
+		JFrame frame = new JFrame("Chat Server");
+		frame.setLayout(null);
+		frame.setVisible(true);
+		frame.setPreferredSize(new Dimension(300, 370));
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
+		
+		Container c = frame.getContentPane();
+		
+		JTextArea messageArea = new JTextArea(30, 10);
+		JScrollPane messageScroll = new JScrollPane(messageArea);
+		messageArea.setEditable(false);
+		messageArea.setText("");
+		messageScroll.setBounds(0, 0, 300, 300);
+
+		JTextField messageField = new JTextField();
+		messageField.setBackground(Color.red);
+		messageField.setBounds(0, 305, 300, 30);
+		messageField.addKeyListener(new KeyListener() {
+
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == e.VK_ENTER) {
+					String input = messageField.getText();
+					
+					messageArea.append(input + "\n");
+					messageField.setText("");
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				
+			}
+
+			public void keyTyped(KeyEvent e) {
+				
+			}
+			
+		});
+		
+		c.add(messageScroll);
+		c.add(messageField);
+		
+		frame.pack();
+
+	}
+}
