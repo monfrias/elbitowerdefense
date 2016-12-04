@@ -10,8 +10,8 @@ public class ElbiTowerDefense extends JFrame {
 	private void initUI() {
 		Board b = new Board();
 		add(b);
-		b.animate(20);
-		setSize(1080, 720);
+		b.animate(100);
+		setSize(1200, 800);
 		setResizable(false);
 		setTitle("Elbi Tower Defense v1.0");
 		setLocationRelativeTo(null);
