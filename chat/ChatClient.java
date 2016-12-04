@@ -23,7 +23,7 @@ public class ChatClient{
         try{
             String serverName = args[0]; //get IP address of server from first param
             int port = Integer.parseInt(args[1]); //get port from second param
-            //         
+            //
             new ChatClient(serverName, port);
         }catch(ArrayIndexOutOfBoundsException e){
             System.out.println("Usage: java GreetingClient <server ip> <port no.> '<your message to the server>'");
@@ -38,7 +38,7 @@ public class ChatClient{
 
                 while(true) {
                     try {
-                     
+
                         InputStream inFromServer = client.getInputStream();
                         DataInputStream in = new DataInputStream(inFromServer);
                         System.out.println(in.readUTF());
@@ -57,7 +57,7 @@ public class ChatClient{
     public void sendMessage() throws IOException{
 
         OutputStream outToServer = client.getOutputStream();
-        DataOutputStream out = new DataOutputStream(outToServer); 
+        DataOutputStream out = new DataOutputStream(outToServer);
 
         while(true) {
 
