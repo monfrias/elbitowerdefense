@@ -1,7 +1,7 @@
 package window;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -29,8 +29,6 @@ public class Screen extends JPanel implements Runnable {
 	public int towerWidth = 40;
 	public int towerHeight = 40;
 	
-	ChatPanel chat = new ChatPanel();
-	
 	Graphics g;
 	
 	public int[][] map = new int[13][29];
@@ -39,7 +37,6 @@ public class Screen extends JPanel implements Runnable {
 	
 	private Player player;
 	
-	Frame frame;
 	private Tower tempTower;
 	Tower ibsTower = new IBSTower();
 	Tower cdcTower = new CDCTower();
@@ -49,13 +46,13 @@ public class Screen extends JPanel implements Runnable {
 	Level level;
 	LevelFile levelFile;
 	
-	BorderLayout layout = new BorderLayout();
+	Frame frame;
 	
 	public Screen(Frame frame) {
-		this.frame  = frame;
-		this.frame.addKeyListener(new KeyHandler(this));
-		this.frame.addMouseListener(new MouseHandler(this));
-		this.setLayout(layout);
+		this.frame = frame;
+		this.frame.addKeyListener(new KeyHandler(this, this.frame));
+		this.addMouseListener(new MouseHandler(this));
+		this.setPreferredSize(new Dimension(1200, 500));
 		thread.start();
 	}
 	
@@ -64,27 +61,29 @@ public class Screen extends JPanel implements Runnable {
 		if(scene == 1){
 			
 			//start background
-			g.setColor(Color.BLACK);
-			g.fillRect(0, 0, this.frame.getWidth(), this.frame.getHeight());
+			g.setColor(Color.WHITE);
+			g.fillRect(0, 0, this.getWidth(), this.getHeight());
 			//end background
 			
 			//start grid
-			g.setColor(Color.GRAY);
+			g.setColor(Color.CYAN);
 			for(int i = 0; i < 29; i++) {
 				for(int j = 0; j < 13; j++) {
-					g.drawRect(20 + i*40, 20 + j*40, 40, 40);
+					g.drawRect(20 + i*35, 20 + j*35, 35, 35);
 				}
 			}
 			//end grid
 			
 			//start health and money section
 			g.setColor(Color.GREEN);
-			g.drawRect(980, 550, 200, 50); //health
-			g.drawString("HEALTH: " + player.getHealth(), 1000, 580);
+			g.drawRect(1050, 20, 120, 70); //health
+			g.drawString("HEALTH: ", 1055, 50);
+			g.drawString(""+player.getHealth(), 1055, 70);
 			
 			g.setColor(Color.YELLOW);
-			g.drawRect(980, 600, 200, 50);
-			g.drawString("MONEY: " + player.getMoney(), 1000, 630);
+			g.drawRect(1050, 100, 120, 70);
+			g.drawString("MONEY: ", 1055, 120);
+			g.drawString(""+player.getMoney(), 1055, 140);
 			//end health and money section
 			
 			//start tower section
@@ -110,7 +109,7 @@ public class Screen extends JPanel implements Runnable {
 			}
 		}
 		
-		g.setColor(Color.WHITE);
+		g.setColor(Color.RED);
 		g.drawString("FRAMES: " + fps, 10, 10);
 	}
 	
@@ -119,16 +118,11 @@ public class Screen extends JPanel implements Runnable {
 		running = true;
 		player = new Player(this);
 		this.scene = 1;
-		
-		//levelFile = new LevelFile();
-		//level = levelFile.getLevel();
 	}
 	
 	public void run() {
 		
-		//this.add(chat, layout.SOUTH);
-		
-		System.out.println("Width: " + this.frame.getWidth() + ", Height: " + this.frame.getHeight());
+		System.out.println("Width: " + this.getWidth() + ", Height: " + this.getHeight());
 		
 		startGame();
 		

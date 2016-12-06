@@ -1,0 +1,59 @@
+package window;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
+
+public class ChatPanel extends JPanel {
+	
+	JTextArea messageArea;
+	JScrollPane messageScroll;
+	JTextField messageField;
+	
+	public ChatPanel(Frame frame) {
+		this.setPreferredSize(new Dimension(500, 160));
+		setBackground(Color.RED);
+		
+		messageArea = new JTextArea(7, 40);
+		messageArea.setEditable(false);
+		
+		messageScroll = new JScrollPane(messageArea);
+		messageScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		
+		messageField = new JTextField(41);
+		messageField.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				
+				String message = messageField.getText();
+				
+				messageArea.append("me: " + message + "\n");
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		this.add(messageScroll);
+		this.add(messageField);
+	}
+}

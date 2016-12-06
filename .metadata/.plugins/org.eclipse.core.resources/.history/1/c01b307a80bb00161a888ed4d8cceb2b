@@ -1,0 +1,25 @@
+package window;
+
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
+
+public class ChatPanel extends JPanel {
+	
+	public ChatPanel(Frame frame) {
+		this.setPreferredSize(new Dimension(500, 160));
+		setBackground(Color.RED);
+		
+		JTextArea messageArea = new JTextArea(8, 30);
+		messageArea.setEditable(false);
+		
+		JScrollPane messageScroll = new JScrollPane(messageArea);
+		messageScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		
+		this.add(messageScroll);
+	}
+}

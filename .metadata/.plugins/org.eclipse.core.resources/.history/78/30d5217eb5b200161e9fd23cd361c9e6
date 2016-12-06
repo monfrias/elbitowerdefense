@@ -1,8 +1,0 @@
-package window;
-
-public class SpawnPoint {
-	
-	public SpawnPoint() {
-		
-	}
-}

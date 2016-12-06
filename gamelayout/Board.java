@@ -64,11 +64,11 @@ public class Board extends JPanel{
     private void doDrawing(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(caminion.getImage(), caminion.getX(), caminion.getY(), this);
-        g2d.drawImage(biologicalsciencetower.getImage(), biologicalsciencetower.getX(), biologicalsciencetower.getY(), this);
-        g2d.drawImage(communicationstower.getImage(), communicationstower.getX(), communicationstower.getY(), this);
-        g2d.drawImage(mathtower.getImage(), mathtower.getX(), mathtower.getY(), this);
-        g2d.drawImage(mainlibtower.getImage(), mainlibtower.getX(), mainlibtower.getY(), this);
-        g2d.drawImage(mainbase.getImage(), mainbase.getX(), mainbase.getY(), this);
+        //g2d.drawImage(biologicalsciencetower.getImage(), biologicalsciencetower.getX(), biologicalsciencetower.getY(), this);
+        //g2d.drawImage(communicationstower.getImage(), communicationstower.getX(), communicationstower.getY(), this);
+        //g2d.drawImage(mathtower.getImage(), mathtower.getX(), mathtower.getY(), this);
+        //g2d.drawImage(mainlibtower.getImage(), mainlibtower.getX(), mainlibtower.getY(), this);
+        //g2d.drawImage(mainbase.getImage(), mainbase.getX(), mainbase.getY(), this);
         g2d.drawImage(portalone.getImage(), portalone.getX(), portalone.getY(), this);     
     }
 
@@ -88,11 +88,11 @@ public class Board extends JPanel{
 									if(y < 330) {
 										caminion.move(x, y);
 										repaint();
-										y+=10;
+										y+=1;
 									} else if(x < 900) {
 										caminion.move(x, y);
 										repaint();
-										x+=10;
+										x+=1;
 									} else {
 										break;
 									}

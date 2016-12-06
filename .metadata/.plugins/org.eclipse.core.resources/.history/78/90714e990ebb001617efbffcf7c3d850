@@ -1,0 +1,14 @@
+package window;
+
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+
+public class ChatPanel extends JPanel {
+	
+	public ChatPanel(Frame frame) {
+		this.setPreferredSize(new Dimension(300, 150));
+		this.setBackground(Color.red);
+	}
+}

@@ -1,0 +1,40 @@
+package window;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+public class KeyHandler implements KeyListener{
+	
+	private Screen screen;
+	private Frame frame;
+	private boolean running;
+	
+	public KeyHandler(Screen screen, Frame frame) {
+		this.screen = screen;
+	}
+	
+	public void keyPressed(KeyEvent e) {
+		
+		int keyCode = e.getKeyCode();
+		
+		if(keyCode == KeyEvent.VK_ESCAPE) {
+			running = this.screen.isRunning();
+			
+			if(running) {
+				this.screen.stopRunning();
+			}
+		}
+		
+		else if(keyCode == KeyEvent.VK_ENTER) {
+			
+		}
+	}
+
+	public void keyReleased(KeyEvent e) {
+		
+	}
+
+	public void keyTyped(KeyEvent e) {
+		
+	}
+}

@@ -1,0 +1,21 @@
+package window;
+
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+public class ChatPanel extends JPanel {
+	
+	public ChatPanel(Frame frame) {
+		this.setPreferredSize(new Dimension(500, 160));
+		setBackground(Color.RED);
+		
+		JTextArea messageArea = new JTextArea(80, 80);
+		messageArea.setEditable(false);
+		
+		
+		this.add(messageArea);
+	}
+}
