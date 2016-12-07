@@ -10,7 +10,7 @@ public class MathTower extends Tower {
 	
 		this.path = "res/towers/MathTower.png";
 		this.cost = 30;
-		this.type = "water";
+		this.type = "MathTower";
 	}
 
 	public Image getTextureFile() {

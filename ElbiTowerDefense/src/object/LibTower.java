@@ -8,7 +8,7 @@ public class LibTower extends Tower {
 	
 	public LibTower() {
 		this.cost = 40;
-		this.type = "lightning";
+		this.type = "LibTower";
 		this.path = "res/towers/MainLibTower.png";
 	}
 	

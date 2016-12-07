@@ -10,7 +10,7 @@ public class CDCTower extends Tower {
 		
 		this.path = "res/towers/CommunicationsTower.png";
 		this.cost = 20;
-		this.type = "water";
+		this.type = "CDCTower";
 	}
 
 	public Image getTextureFile() {

@@ -10,7 +10,7 @@ public class IBSTower extends Tower {
 
 		this.path = "res/towers/BiologicalScienceTower.png";
 		this.cost = 10;
-		this.type = "fire";
+		this.type = "IBSTower";
 	}
 
 	public Image getTextureFile() {
