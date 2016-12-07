@@ -19,6 +19,7 @@ public class Screen extends JPanel implements Runnable {
 	private static final long serialVersionUID = 8774272556401768353L;
 	
 	public Thread thread = new Thread(this);
+	private boolean mouseDown = false;
 	private int fps = 0;
 	private int scene;
 	private int hand = 0;
@@ -42,6 +43,7 @@ public class Screen extends JPanel implements Runnable {
 	Tower cdcTower = new CDCTower();
 	Tower mathTower = new MathTower();
 	Tower libTower = new LibTower();
+	Tower currentTower;
 	
 	Level level;
 	LevelFile levelFile;
@@ -61,7 +63,7 @@ public class Screen extends JPanel implements Runnable {
 		if(scene == 1){
 			
 			//start background
-			g.setColor(Color.WHITE);
+			g.setColor(Color.BLACK);
 			g.fillRect(0, 0, this.getWidth(), this.getHeight());
 			//end background
 			
@@ -76,36 +78,36 @@ public class Screen extends JPanel implements Runnable {
 			
 			//start health and money section
 			g.setColor(Color.GREEN);
-			g.drawRect(1050, 20, 120, 70); //health
-			g.drawString("HEALTH: ", 1055, 50);
-			g.drawString(""+player.getHealth(), 1055, 70);
+			g.drawRect(1050, 20, 120, 35); //health
+			g.drawString("HEALTH: ", 1055, 35);
+			g.drawString(""+player.getHealth(), 1055, 50);
 			
-			g.setColor(Color.YELLOW);
-			g.drawRect(1050, 100, 120, 70);
-			g.drawString("MONEY: ", 1055, 120);
-			g.drawString(""+player.getMoney(), 1055, 140);
+			g.setColor(Color.ORANGE);
+			g.drawRect(1050, 70, 120, 35);
+			g.drawString("MONEY: ", 1055, 85);
+			g.drawString(""+player.getMoney(), 1055, 100);
 			//end health and money section
 			
 			//start tower section
 			
-			int x = 700;
+			int y = 120;
 			
 			for(int i = 0; i < 4; i++) {
 				g.setColor(Color.GREEN);
 				
-				g.drawRect(x, 560, 80, 80);
+				g.drawRect(1055, y, 80, 80);
 				
 				if(i == 0) tempTower = libTower;
 				else if(i == 1) tempTower = mathTower;
 				else if(i == 2) tempTower = cdcTower;
 				else tempTower = ibsTower;
 				
-				g.drawImage(tempTower.getTextureFile(), x, 560, 80, 80,null);
+				g.drawImage(tempTower.getTextureFile(), 1055, y, 80, 80,null);
 				if(tempTower.cost > this.player.getMoney()) {
 					g.setColor(new Color(255, 0, 0, 100));
-					g.fillRect(x, 560, 80, 80);
+					g.fillRect(1055, y, 80, 80);
 				}
-				x -= 120;
+				y += 90;
 			}
 		}
 		
@@ -203,5 +205,21 @@ public class Screen extends JPanel implements Runnable {
 	
 	public Tower getTempTower() {
 		return this.tempTower;
+	}
+	
+	public void setCurrentTower(Tower tower) {
+		this.currentTower = tower;
+	}
+	
+	public Tower getCurrentTower() {
+		return this.currentTower;
+	}
+	
+	public void setMouseDown(boolean mouseDown) {
+		this.mouseDown = mouseDown;
+	}
+	
+	public boolean getMouseDown() {
+		return this.mouseDown;
 	}
 }

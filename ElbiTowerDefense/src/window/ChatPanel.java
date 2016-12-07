@@ -21,7 +21,7 @@ public class ChatPanel extends JPanel {
 	public ChatPanel(Frame frame) {
 		this.frame = frame;
 		this.setPreferredSize(new Dimension(500, 160));
-		setBackground(Color.RED);
+		setBackground(Color.BLACK);
 		
 		messageArea = new JTextArea(7, 40);
 		messageArea.setEditable(false);
