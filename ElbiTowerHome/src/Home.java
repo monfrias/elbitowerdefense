@@ -20,26 +20,52 @@ public class Home extends JFrame{
     JPanel toGame = new JPanel();
     JPanel home = new JPanel();
     JPanel window = new JPanel();
+    
+    JLabel noPlayer = new JLabel("Enter Number of Players: ");
+	final JTextField players = new JTextField(15);
+    
     JButton sg = new JButton("START GAME");
     JButton ins = new JButton("INSTRUCTIONS");
-    JButton backToHome = new JButton("RETURN TO HOME");
-    JButton proceedToGame = new JButton("PROCEED TO GAME");
-    JButton next1 = new JButton("NINSTRUCTION"); //inst1
-    JButton prev2 = new JButton("PINSTRUCTION"); //inst2
-    JButton next2 = new JButton("NINSTRUCTION");
-    JButton prev3 = new JButton("PINSTRUCTION"); //inst3
-    JButton next3 = new JButton("NINSTRUCTION");
-    JButton prev4 = new JButton("PINSTRUCTION"); //inst4
-    JButton next4 = new JButton("NINSTRUCTION");
-    JButton prev5 = new JButton("PINSTRUCTION"); //inst5
-    JButton next5 = new JButton("NINSTRUCTION");
-    JButton prev6 = new JButton("PINSTRUCTION"); //inst6
-    JButton next6 = new JButton("NINSTRUCTION");
-    JButton prev7 = new JButton("PINSTRUCTION"); //inst7
-    JButton next7 = new JButton("NINSTRUCTION");
-    JButton prev8 = new JButton("PINSTRUCTION"); //inst8
-    JButton next8 = new JButton("NINSTRUCTION");
-    JButton prev9 = new JButton("PINSTRUCTION"); //inst9
+    
+    JButton backToHome = new JButton("Back to Home");
+    JButton proceedToGame = new JButton("Proceed to Game");
+    
+    JButton prev1 = new JButton("PREV");
+    JButton b1 = new JButton("BACK TO HOME");
+    JButton next1 = new JButton("NEXT"); //(new ImageIcon("C:\\Users\\ASUS\\workspace\\ElbiTowerHome\\src\\Image\\rightarrow.jpg"));
+    
+    JButton prev2 = new JButton("PREV"); 
+    JButton b2 = new JButton("BACK TO HOME");
+    JButton next2 = new JButton("NEXT");
+    
+    JButton prev3 = new JButton("PREV"); 
+    JButton b3 = new JButton("BACK TO HOME");
+    JButton next3 = new JButton("NEXT");
+    
+    JButton prev4 = new JButton("PREV"); 
+    JButton b4 = new JButton("BACK TO HOME");
+    JButton next4 = new JButton("NEXT");
+    
+    JButton prev5 = new JButton("PREV"); 
+    JButton b5 = new JButton("BACK TO HOME");
+    JButton next5 = new JButton("NEXT");
+    
+    JButton prev6 = new JButton("PREV"); 
+    JButton b6 = new JButton("BACK TO HOME");
+    JButton next6 = new JButton("NEXT");
+    
+    JButton prev7 = new JButton("PREV"); 
+    JButton b7 = new JButton("BACK TO HOME");
+    JButton next7 = new JButton("NEXT");
+    
+    JButton prev8 = new JButton("PREV"); 
+    JButton b8 = new JButton("BACK TO HOME");
+    JButton next8 = new JButton("NEXT");
+    
+    JButton prev9 = new JButton("PREV"); 
+    JButton b9 = new JButton("BACK TO HOME");
+    JButton next9 = new JButton("NEXT");
+    
     JLabel MainPageBG = new JLabel(new ImageIcon("C:\\Users\\ASUS\\workspace\\ElbiTowerHome\\src\\Image\\home.jpg"));
     JLabel IMGinst1 = new JLabel(new ImageIcon("C:\\Users\\ASUS\\workspace\\ElbiTowerHome\\src\\Image\\Page 1.jpg"));
     JLabel IMGinst2 = new JLabel(new ImageIcon("C:\\Users\\ASUS\\workspace\\ElbiTowerHome\\src\\Image\\Page 2.jpg"));
@@ -57,58 +83,114 @@ public class Home extends JFrame{
         frame.setLocationRelativeTo(null);
     	frame.setLayout(new BorderLayout());
     	
-    	this.changeButtonFeatUU(backToHome);
     	this.changeButtonFeatU(sg);
     	this.changeButtonFeatD(ins);
-    	this.changeButtonFeatUU(proceedToGame);
-    	this.changeButtonFeatC(next1);
-    	this.changeButtonFeatR(next2);
-    	this.changeButtonFeatR(next3);
-    	this.changeButtonFeatR(next4);
-    	this.changeButtonFeatR(next5);
-    	this.changeButtonFeatR(next6);
-    	this.changeButtonFeatR(next7);
-    	this.changeButtonFeatR(next8);
+    	
+    	//this.changeButtonFeatD(backToHome);
+    	//this.changeButtonFeatU(proceedToGame);
+    	
+    	this.changeButtonFeatL(prev1);
+    	this.changeButtonFeatC(b1);
+    	this.changeButtonFeatR(next1);
+    	
     	this.changeButtonFeatL(prev2);
+    	this.changeButtonFeatC(b2);
+    	this.changeButtonFeatR(next2);
+    	
     	this.changeButtonFeatL(prev3);
+    	this.changeButtonFeatC(b3);
+    	this.changeButtonFeatR(next3);
+    	
     	this.changeButtonFeatL(prev4);
+    	this.changeButtonFeatC(b4);
+    	this.changeButtonFeatR(next4);
+    	
     	this.changeButtonFeatL(prev5);
+    	this.changeButtonFeatC(b5);
+    	this.changeButtonFeatR(next5);
+    	
     	this.changeButtonFeatL(prev6);
+    	this.changeButtonFeatC(b6);
+    	this.changeButtonFeatR(next6);
+    	
     	this.changeButtonFeatL(prev7);
+    	this.changeButtonFeatC(b7);
+    	this.changeButtonFeatR(next7);
+    	
     	this.changeButtonFeatL(prev8);
-    	this.changeButtonFeatC(prev9);
+    	this.changeButtonFeatC(b8);
+    	this.changeButtonFeatR(next8);
+    	
+    	this.changeButtonFeatL(prev9);
+    	this.changeButtonFeatC(b9);
+    	this.changeButtonFeatR(next9);
     	
     	window.setLayout(cl);
-    	toGame.add(proceedToGame);
     	MainPageBG.add(sg);
     	MainPageBG.add(ins);
-    	IMGinst1.add(backToHome);
+    	
+    	IMGinst1.add(prev1);
+    	IMGinst1.add(b1);
     	IMGinst1.add(next1);
-    	IMGinst2.add(backToHome);
+    	
     	IMGinst2.add(prev2);
+    	IMGinst2.add(b2);
     	IMGinst2.add(next2);
-    	IMGinst3.add(backToHome);
+    	
     	IMGinst3.add(prev3);
+    	IMGinst3.add(b3);
     	IMGinst3.add(next3);
-    	IMGinst4.add(backToHome);
+    	
     	IMGinst4.add(prev4);
+    	IMGinst4.add(b4);
     	IMGinst4.add(next4);
-    	IMGinst5.add(backToHome);
+    	
     	IMGinst5.add(prev5);
+    	IMGinst5.add(b5);
     	IMGinst5.add(next5);
-    	IMGinst6.add(backToHome);
+    	
     	IMGinst6.add(prev6);
+    	IMGinst6.add(b6);
     	IMGinst6.add(next6);
-    	IMGinst7.add(backToHome);
+    	
     	IMGinst7.add(prev7);
+    	IMGinst7.add(b7);
     	IMGinst7.add(next7);
-    	IMGinst8.add(backToHome);
+    	
     	IMGinst8.add(prev8);
+    	IMGinst8.add(b8);
     	IMGinst8.add(next8);
-    	IMGinst9.add(backToHome);
+    	
     	IMGinst9.add(prev9);
+    	IMGinst9.add(b9);
+    	IMGinst9.add(next9);
+    	
+    	
+    	
+    	//noPlayer.setF
+    	
+    	//panel1.setLayout(new FlowLayout());
+    	//panel.setBackground(new Color(183, 236, 242));
+    	//panel1.setBackground(new Color(183, 236, 242));
+    	//toGame.setBackground(new Color(183, 236, 242));
+    	
+    	//Page before the game - ask the user the no. of players
+    	//panel1.add(noPlayer);
+    	//panel1.add(players);
+    	//panel1.setPreferredSize(new Dimension(400, 800));
+    	//panel.add(proceedToGame);
+    	//panel.add(backToHome);
+    	//panel.setPreferredSize(new Dimension(500, 800));
+    	//toGame.add(panel1, BorderLayout.CENTER);
+    	//toGame.add(panel, BorderLayout.PAGE_END);
+    	//toGame.add(panel1);
+    	//toGame.add(panel);
+    	//panel.add(noPlayer);
+    	//panel.add(players);
+    	//panel.add(proceedToGame);
     	
     	home.add(MainPageBG);
+    	//toGame.add(panel);
     	inst1.add(IMGinst1);
     	inst2.add(IMGinst2);
     	inst3.add(IMGinst3);
@@ -118,8 +200,6 @@ public class Home extends JFrame{
     	inst7.add(IMGinst7);
     	inst8.add(IMGinst8);
     	inst9.add(IMGinst9);
-    	//inst1.setBackground(Color.CYAN);
-    	toGame.setBackground(Color.CYAN);
     	
     	window.add(home, "1");
     	window.add(toGame, "2");
@@ -134,15 +214,16 @@ public class Home extends JFrame{
     	window.add(inst9, "11");
     	cl.show(window, "1");
     	
-    	backToHome.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				cl.show(window, "1");
-				
-			}
-    		
-    	});
+    	this.action(b1);
+    	this.action(b2);
+    	this.action(b3);
+    	this.action(b4);
+    	this.action(b5);
+    	this.action(b6);
+    	this.action(b7);
+    	this.action(b8);
+    	this.action(b9);
+    	this.action(backToHome);
     	
     	proceedToGame.addActionListener(new ActionListener(){
 
@@ -244,6 +325,24 @@ public class Home extends JFrame{
     		
     	});
     	
+    	next9.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(window, "1"); //main game
+				
+			}
+    		
+    	});
+    	
+    	prev1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(window, "1");
+				
+			}
+    		
+    	});
+    	
     	prev2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -321,14 +420,17 @@ public class Home extends JFrame{
     	frame.setVisible(true);
     }
     
-    public void changeButtonFeatD(JButton b){
-    	b.setBackground(new Color(255, 51, 51));
-	    b.setForeground(Color.WHITE);
-	    b.setFocusPainted(false);
-	    b.setFont(new Font("Tahoma", Font.BOLD, 24));
-	    b.setBounds(700,400,300,60);
+    public void action(JButton b){
+    	b.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(window, "1");
+				
+			}
+    		
+    	});
     }
-
+    
     public void changeButtonFeatU(JButton b){
     	b.setBackground(new Color(255, 51, 51));
 	    b.setForeground(Color.WHITE);
@@ -337,20 +439,12 @@ public class Home extends JFrame{
 	    b.setBounds(700,310,300,60);
     }
     
-    public void changeButtonFeatUU(JButton b){
+    public void changeButtonFeatD(JButton b){
     	b.setBackground(new Color(255, 51, 51));
 	    b.setForeground(Color.WHITE);
 	    b.setFocusPainted(false);
 	    b.setFont(new Font("Tahoma", Font.BOLD, 24));
-	    b.setBounds(500,120,300,60);
-    }
-    
-    public void changeButtonFeatR(JButton b){
-    	b.setBackground(new Color(255, 51, 51));
-	    b.setForeground(Color.WHITE);
-	    b.setFocusPainted(false);
-	    b.setFont(new Font("Tahoma", Font.BOLD, 24));
-	    b.setBounds(700,600,300,60);
+	    b.setBounds(700,400,300,60);
     }
     
     public void changeButtonFeatL(JButton b){
@@ -358,7 +452,7 @@ public class Home extends JFrame{
 	    b.setForeground(Color.WHITE);
 	    b.setFocusPainted(false);
 	    b.setFont(new Font("Tahoma", Font.BOLD, 24));
-	    b.setBounds(200,600,300,60);
+	    b.setBounds(120,90,100,60);
     }
     
     public void changeButtonFeatC(JButton b){
@@ -366,7 +460,15 @@ public class Home extends JFrame{
 	    b.setForeground(Color.WHITE);
 	    b.setFocusPainted(false);
 	    b.setFont(new Font("Tahoma", Font.BOLD, 24));
-	    b.setBounds(500,600,300,60);
+	    b.setBounds(460,90,300,50);
+    }
+    
+    public void changeButtonFeatR(JButton b){
+    	b.setBackground(new Color(255, 51, 51));
+	    b.setForeground(Color.WHITE);
+	    b.setFocusPainted(false);
+	    b.setFont(new Font("Tahoma", Font.BOLD, 24));
+	    b.setBounds(980,90,100,50);
     }
 
 	public static void main(String args[]){
