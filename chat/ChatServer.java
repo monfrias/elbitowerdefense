@@ -40,7 +40,7 @@ public class ChatServer {
         try{
             int port = Integer.parseInt(args[0]);
             new ChatServer(port);
-            
+
         }catch(IOException e){
             //e.printStackTrace();
             System.out.println("Usage: java GreetingServer <port no.>\n"+
@@ -59,22 +59,22 @@ public class ChatServer {
             public void run() {
 
                 try {
-                    
+
                     DataInputStream in = new DataInputStream(client.getInputStream());
                     String input;
 
                     while(true) {
-     
-                            
+
+
                         input = in.readUTF();
                         sendMessage(input);
                         System.out.println(input);
-                        
+
                     }
                 }
 
                 catch(IOException e) {
-                    
+
                 }
             }
         };

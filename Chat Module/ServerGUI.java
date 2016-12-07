@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.net.InetAddress;
 
 /*
  * The server as a GUI
@@ -14,19 +15,33 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 	private JTextArea chat, event;
 	// The port number
 	private JTextField tPortNumber;
+	// The server IP
+	private JTextField tIPAdd;
 	// my server
 	private Server server;
 
+	private String ip;
 
 	// server constructor that receive the port to listen to for connection as parameter
 	ServerGUI(int port) {
 		super("Chat Server");
+		try {
+			this.ip = InetAddress.getLocalHost().getHostAddress();
+		} catch (Exception e) {
+
+		}
+
 		server = null;
 		// in the NorthPanel the PortNumber the Start and Stop buttons
 		JPanel north = new JPanel();
+		north.add(new JLabel("Server IP: "));
+		tIPAdd = new JTextField("" + this.ip);
+		north.add(tIPAdd);
 		north.add(new JLabel("Port number: "));
-		tPortNumber = new JTextField("  " + port);
+		tPortNumber = new JTextField("" + port);
 		north.add(tPortNumber);
+
+
 		// to stop or start the server, we start with "Start"
 		stopStart = new JButton("Start");
 		stopStart.addActionListener(this);
@@ -37,7 +52,7 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 		JPanel center = new JPanel(new GridLayout(2,1));
 		chat = new JTextArea(80,80);
 		chat.setEditable(false);
-		appendRoom("Chat room.\n");
+		appendRoom("Chat Room\n");
 		center.add(new JScrollPane(chat));
 		event = new JTextArea(80,80);
 		event.setEditable(false);
@@ -49,6 +64,7 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 		addWindowListener(this);
 		setSize(400, 600);
 		setVisible(true);
+
 	}
 
 	// append message to the two JTextArea
@@ -70,6 +86,7 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 			server.stop();
 			server = null;
 			tPortNumber.setEditable(true);
+			tIPAdd.setEditable(false);
 			stopStart.setText("Start");
 			return;
 		}
@@ -82,18 +99,22 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 			appendEvent("Invalid port number");
 			return;
 		}
+
+
 		// ceate a new Server
 		server = new Server(port, this);
 		// and start it as a thread
 		new ServerRunning().start();
 		stopStart.setText("Stop");
 		tPortNumber.setEditable(false);
+		tIPAdd.setEditable(false);
 	}
 
 	// entry point to start the Server
 	public static void main(String[] arg) {
 		// start server default port 1500
-		new ServerGUI(1500);
+		new ServerGUI(Integer.parseInt(arg[0]));
+
 	}
 
 	/*
