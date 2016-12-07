@@ -9,7 +9,7 @@ public class Player {
 	private Screen screen;
 	private int health;
 	private int money;
-	private final int startingMoney = 500;
+	private final int startingMoney = 1000;
 	private final int startingHealth = 10;
 	
 	public Player(Screen screen) {
