@@ -100,7 +100,7 @@ public class ServerGUI extends JFrame implements ActionListener, WindowListener 
 			return;
 		}
 
-		
+
 		// ceate a new Server
 		server = new Server(port, this);
 		// and start it as a thread
