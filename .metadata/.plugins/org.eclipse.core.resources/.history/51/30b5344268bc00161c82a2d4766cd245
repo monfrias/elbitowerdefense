@@ -1,0 +1,14 @@
+package object;
+
+public class User {
+
+	public int portNumber;
+	public String address;
+	public String name;
+	
+	public User(int portNumber, String address, String name) {
+		this.portNumber = portNumber;
+		this.address = address;
+		this.name = name;
+	}
+}

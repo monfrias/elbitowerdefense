@@ -3,12 +3,22 @@ package window;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.net.Socket;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import object.User;
 
 public class Frame extends JFrame{
 	
-	ChatPanel chat;
+	public ChatPanel chat;
+	public User user;
+	public Screen screen;
 	
 	public static void main(String[] args) {
 		
@@ -26,11 +36,29 @@ public class Frame extends JFrame{
 		this.setLayout(new FlowLayout());
 		this.getContentPane().setBackground(Color.BLACK);
 		
-		Screen screen = new Screen(this);
-		chat = new ChatPanel(this);
+		JTextField portNumberField = new JTextField(10); 
+		JTextField addressField = new JTextField(10);
+		JTextField nameField = new JTextField(10);
+		
+		JPanel credentialsPanel = new JPanel();
+		credentialsPanel.add(new JLabel("Port number: "));
+		credentialsPanel.add(portNumberField);
+		credentialsPanel.add(new JLabel("IP Address: "));
+		credentialsPanel.add(addressField);
+		credentialsPanel.add(new JLabel("Name: "));
+		credentialsPanel.add(nameField);
+		
+		int choice = JOptionPane.showConfirmDialog(null, credentialsPanel, "Credentials Pane", JOptionPane.OK_OPTION);
+		
+		if(choice == JOptionPane.OK_OPTION) {
+			user = new User(this, Integer.parseInt(portNumberField.getText()), addressField.getText(), nameField.getText());
+		}
+		
+		screen = new Screen(this);
+		chat = new ChatPanel(this, user);
 		this.add(screen);
 		this.add(chat);
-		
 		this.pack();
+		
 	}
 }
